@@ -79,6 +79,8 @@ namespace WSB_S3_P5
             {
                 // i = tower height, elements are 0-indexed so we need i-1 to access them
 
+                Console.CursorLeft = (TowerID * (this.Width + 2));
+
                 if ((i - 1) < Elements.Count)
                 {
                     //have elements? draw elements
@@ -87,9 +89,10 @@ namespace WSB_S3_P5
                 else
                 {
                     //no elements here? draw a | inside the tower
-                    Console.CursorLeft = (TowerID * this.Width) - Elements.Capacity; //center
+                    Console.CursorLeft += Elements.Capacity; //center
                     Console.Write("|");
                 }
+
                 Console.WriteLine();
             }
         }

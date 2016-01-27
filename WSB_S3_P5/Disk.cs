@@ -19,7 +19,20 @@ namespace WSB_S3_P5
 
         public void Print()
         {
-            throw new NotImplementedException();
+            Console.CursorLeft += (this.TowerHeight - this.Width);
+            for (int i = 0; i < (this.Width*2 - 1); i++)
+            {
+                
+                if (i > (this.Width - 2))
+                {
+                    Console.Write("▓");
+                }
+                else
+                {
+                    Console.Write("▒");
+                }
+            }
+            
         }
 
         public int CompareTo(Disk o)
