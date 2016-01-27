@@ -6,32 +6,54 @@ using System.Threading.Tasks;
 
 namespace WSB_S3_P5
 {
-    class Tower<T> where T : IPrintable, IComparable
+    class Tower<T> where T : IPrintable, IComparable<T>
     {
-        List<T> Elements;
+        private List<T> Elements;
 
-        public int Height{ get{
-            return Elements.Count;
-        }}
 
-        public int Width { get {
-            return ((this.Elements.Capacity * 2) - 1);
-        }}
-        
+
+        public int Height
+        {
+            get
+            {
+                return Elements.Count;
+            }
+        }
+
+        private int Width
+        {
+            get
+            {
+                return ((this.Elements.Capacity * 2) - 1);
+            }
+        }
+
+
+
         public Tower(int height)
         {
             Elements = new List<T>(height);
         }
 
+
+
         public void Push(T element)
         {
-            if (element.CompareTo(Elements.Last()) > 0)
+            try
             {
-                Elements.Add(element);
+                if (element.CompareTo(Elements.Last()) > 0)
+                {
+                    Elements.Add(element);
+                }
+                else
+                {
+                    throw new LargerOnSmallerElementException();
+                }
             }
-            else
+            catch (InvalidOperationException)
             {
-                throw new LargerOnSmallerElementException();
+                //tower is empty? any element goes
+                Elements.Add(element);
             }
         }
 
@@ -48,6 +70,8 @@ namespace WSB_S3_P5
             return TopElement;
 
         }
+
+
 
         public void Print(int TowerID)
         {

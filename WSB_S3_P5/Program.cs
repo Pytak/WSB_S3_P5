@@ -12,13 +12,21 @@ namespace WSB_S3_P5
         {
             Tower<Disk> TestTower = new Tower<Disk>(5);
 
+            for (int i = 5; i > 0; i--)
+            {
+                TestTower.Push(new Disk(i, 5));
+            }
+
             TestTower.Print(1);
             Console.CursorTop = 0;
             TestTower.Print(2);
             Console.CursorTop = 0;
             TestTower.Print(3);
+            Console.CursorTop = 0;
 
-            Console.ReadLine();
+            
+
+                Console.ReadLine();
         }
     }
 }
