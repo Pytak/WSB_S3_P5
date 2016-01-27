@@ -89,7 +89,7 @@ namespace WSB_S3_P5
                 else
                 {
                     //no elements here? draw a | inside the tower
-                    Console.CursorLeft += Elements.Capacity; //center
+                    Console.CursorLeft += Elements.Capacity-1; //center
                     Console.Write("|");
                 }
 

@@ -26,6 +26,7 @@ namespace WSB_S3_P5
 
         static void DrawTowers()
         {
+            Console.CursorTop = 0;
             for (int i = 0; i < 3; i++)
             {
                 Towers[i].Print(i);
@@ -61,22 +62,29 @@ namespace WSB_S3_P5
             int UserHeight = CheckRangeFromKB(3, 9);
 
 
-            Console.Clear();
-
-
             InitializeTowers(UserHeight);
 
 
             int Next;
+            Disk CurrentDisk;
             while (true)
             {
+                Console.Clear();
                 DrawTowers();
+
                 Console.CursorTop = UserHeight;
 
                 Console.Write("Przenieś z:  ");
                 Next = CheckRangeFromKB(1, 3);
 
-                Console.Clear();
+                CurrentDisk = Towers[Next - 1].Pop();
+
+                Console.CursorLeft = 0;
+
+                Console.Write("Przenieś do: ");
+                Next = CheckRangeFromKB(1, 3);
+
+                Towers[Next - 1].Push(CurrentDisk);
             }
 
 
